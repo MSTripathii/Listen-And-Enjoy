@@ -143,8 +143,8 @@ function ChangeMusic(direction){
 
 function updateProgressBar() {
     const { duration, currentTime } = music;
-    console.log('duration:', duration);
-    console.log('currentTime:', currentTime);
+    // console.log('duration:', duration);
+    // console.log('currentTime:', currentTime);
     const progressPercent = Math.ceil((Math.round(currentTime) / Math.round(duration)) * 100);
     Progress.style.width = `${progressPercent}%`;
 
@@ -173,3 +173,116 @@ music.addEventListener('timeupdate', updateProgressBar);
 PlayerProgress.addEventListener('click', setProgressBar);
 
 loadMusic(songs[musicIndex]);
+
+const PopUp = document.getElementById('playlist'),
+PopUp_Playlist = document.getElementById('list');
+
+let pop_activity = false;
+
+PopUp_Playlist.addEventListener('click', ()=>{
+
+    if(pop_activity){
+        PopUp.style.display = "none";
+        pop_activity = false;
+    }
+    else{
+        PopUp.style.display = "flex";
+        pop_activity = true;
+    }
+})
+
+
+const songElements = document.querySelectorAll('.songs');
+
+songElements.forEach(function(songElement) {
+  songElement.addEventListener('click', function() {
+    let value = this.dataset.value;
+    console.log(value);
+    loadMusic(songs[value]);
+    if(IsPLaying){
+        music.play();
+    }
+  });
+});
+
+
+// const song = document.getElementById('song1');
+
+// song.addEventListener('click', function(){
+//     let value = this.dataset.value;
+//     console.log(value);
+//     loadMusic(songs[value]);
+//     music.play();
+// })
+
+// const song1 = document.getElementById('song1');
+
+// song1.addEventListener('click', function(){
+//     let value = this.dataset.value;
+//     console.log(value);
+//     loadMusic(songs[value]);
+//     music.play();
+// })
+
+// const song2 = document.getElementById('song2');
+
+// song2.addEventListener('click', function(){
+//     let value = this.dataset.value;
+//     console.log(value);
+//     loadMusic(songs[value]);
+//     music.play();
+// })
+
+// const song3 = document.getElementById('song3');
+
+// song3.addEventListener('click', function(){
+//     let value = this.dataset.value;
+//     console.log(value);
+//     loadMusic(songs[value]);
+//     music.play();
+// })
+
+// const song4 = document.getElementById('song4');
+
+// song4.addEventListener('click', function(){
+//     let value = this.dataset.value;
+//     console.log(value);
+//     loadMusic(songs[value]);
+//     music.play();
+// })
+
+// const song5 = document.getElementById('song5');
+
+// song5.addEventListener('click', function(){
+//     let value = this.dataset.value;
+//     console.log(value);
+//     loadMusic(songs[value]);
+//     music.play();
+// })
+
+// const song6 = document.getElementById('song6');
+
+// song6.addEventListener('click', function(){
+//     let value = this.dataset.value;
+//     console.log(value);
+//     loadMusic(songs[value]);
+//     music.play();
+// })
+
+// const song7 = document.getElementById('song7');
+
+// song7.addEventListener('click', function(){
+//     let value = this.dataset.value;
+//     console.log(value);
+//     loadMusic(songs[value]);
+//     music.play();
+// })
+
+// const song8 = document.getElementById('song8');
+
+// song8.addEventListener('click', function(){
+//     let value = this.dataset.value;
+//     console.log(value);
+//     loadMusic(songs[value]);
+//     music.play();
+// })

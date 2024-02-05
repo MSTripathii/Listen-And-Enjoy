@@ -145,3 +145,46 @@ h2{
 .fa-solid:hover, .bx:hover{
     filter: brightness(40%);
 }
+
+#playlist{
+    margin-top: 50px;
+    margin-left: 10px;
+    background: rgba(0, 0, 0, 0.308);
+    height: 150px;
+    width: 280px;
+    padding: 10px;
+    position: absolute;
+    display: none;
+    flex-direction:column;
+    transition: all 0.5s ease-in-out;
+    overflow: scroll;
+    border-radius: 10px;
+}
+
+#playlist::-webkit-scrollbar{
+    display: none;
+}
+
+.songs{
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.songs p{
+    font-size: 20px;
+    height: inherit;
+    width: 100%;
+}
+
+.songs img{
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+}
+
+.songs:hover{
+    background: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    border-radius: 10px;
+}
