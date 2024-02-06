@@ -133,7 +133,7 @@ h2{
     justify-content: space-between;
 }
 
-.fa-solid, .bx{
+.fa-solid, .bx,#bx1{
     font-size: 22px;
     padding: 20px;
     cursor: pointer;
@@ -142,7 +142,16 @@ h2{
     color: rgb(44, 40, 40);
 }
 
-.fa-solid:hover, .bx:hover{
+.bx{
+    display: block;
+}
+
+#bx1{
+    margin-left: 0px -63px;
+    display: none;
+}
+
+.fa-solid:hover, .bx:hover,#bx1:hover{
     filter: brightness(40%);
 }
 
@@ -175,6 +184,7 @@ h2{
     font-size: 20px;
     height: inherit;
     width: 100%;
+    color:white;
 }
 
 .songs img{

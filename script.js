@@ -7,7 +7,9 @@ PlayerProgress = document.getElementById('player_progress'),
 Progress = document.getElementById('progress'),
 PrevBtn = document.getElementById('prev'),
 NextBtn = document.getElementById('next'),
-PlayBtn = document.getElementById('play');
+PlayBtn = document.getElementById('play'),
+shuffle = document.getElementById('shuffle_loop'),
+loop = document.getElementById('bx1');
 
 // let audio = new Audio('/assets/song/Masakali.mp3');
 // let IsPLaying = false;
@@ -163,12 +165,40 @@ function setProgressBar(e) {
     const clickX = e.offsetX;
     music.currentTime = (clickX / width) * music.duration;
 }
+let value = '';
+
+    shuffle.addEventListener('click', function(){
+        value = this.dataset.value;
+        console.log(value)
+        shuffle.style.display = 'none';
+        loop.style.display = 'block';
+    })
+
+    loop.addEventListener('click', function(){
+        value = this.dataset.value;
+        console.log(value);
+        loop.style.display = 'none';
+        shuffle.style.display = 'block';
+    })
 
 
 PlayBtn.addEventListener('click', toogleMusic);
 PrevBtn.addEventListener('click', ()=> ChangeMusic(-1));
 NextBtn.addEventListener('click', ()=> ChangeMusic(1));
-music.addEventListener('ended', ()=> ChangeMusic(1));
+music.addEventListener('ended', function(){
+    if(value === 'loop'){
+        // console.log(value)
+        // ChangeMusic(0);
+        loadMusic(songs[musicIndex]);
+        updateProgressBar();
+        if(IsPLaying){
+            music.play();
+        }
+    }
+    else if(value === 'shuffle'){
+        ChangeMusic(1);
+    }
+});
 music.addEventListener('timeupdate', updateProgressBar);
 PlayerProgress.addEventListener('click', setProgressBar);
 
@@ -204,6 +234,44 @@ songElements.forEach(function(songElement) {
     }
   });
 });
+
+// let isLooping = false;
+
+// function loop() {
+//     const { currentTime, duration } = music;
+//     if (currentTime + 0.1 >= duration) {
+//         loadMusic(songs[musicIndex]);
+//         updateProgressBar();
+//     }
+// }
+
+// function startLoop(){
+//     isLooping = true;
+//     music.addEventListener('ended', loop);
+// }
+
+// function stopLoop(){
+//     isLooping = false;
+//     music.removeEventListener('ended', loop);
+// }
+
+// let looping = false;
+
+// const shuffle = document.getElementById('shuffle_loop'),
+// Repeat_one = document.getElementById('bx1');
+// shuffle.addEventListener('click', ()=>{
+//     shuffle.style.display = 'none';
+//     Repeat_one.style.display = 'block'; 
+//     music.addEventListener('ended', ()=> loadMusic(songs[musicIndex]));
+//     updateProgressBar();
+// })
+
+// Repeat_one.addEventListener('click', ()=>{
+//     shuffle.style.display = 'block';
+//     Repeat_one.style.display = 'none';
+//     music.addEventListener('ended', ()=> ChangeMusic(1));
+// })
+
 
 
 // const song = document.getElementById('song1');
@@ -285,4 +353,23 @@ songElements.forEach(function(songElement) {
 //     console.log(value);
 //     loadMusic(songs[value]);
 //     music.play();
+// })
+
+// const Shuffle_Loop = document.getElementById('shuffle_loop'),
+// loop = document.getElementById('bx');
+
+// let loop_or_suffle = false;
+
+// Shuffle_Loop.addEventListener('click', ()=>{
+
+//     if(loop_or_suffle){
+//         bx.style.display = 'block';
+//         Shuffle_Loop.style.display = 'none';
+//         loop_or_suffle = false;
+//     }
+//     else{
+//         bx.style.display = 'none';
+//         Shuffle_Loop.style.display = 'block';
+//         loop_or_suffle = true;
+//     }
 // })
