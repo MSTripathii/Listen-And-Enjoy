@@ -11,36 +11,6 @@ PlayBtn = document.getElementById('play'),
 shuffle = document.getElementById('shuffle_loop'),
 loop = document.getElementById('bx1');
 
-// let audio = new Audio('/assets/song/Masakali.mp3');
-// let IsPLaying = false;
-// let ResumePosition = 0;
-
-// PlayBtn.addEventListener("click", ()=>{
-//     if(!IsPLaying){
-//         if(ResumePosition === 0)
-//         {
-//             audio.play();
-//         }
-//         else{
-//             audio.currentTime = ResumePosition;
-//             audio.play();
-//         }
-//         PlayBtn.classList.replace("fa-play", "fa-pause");
-//     }
-//     else{
-//         audio.pause();
-//         PlayBtn.classList.replace("fa-pause", "fa-play");
-//         ResumePosition = audio.currentTime;
-//     }
-
-//     IsPLaying = true;
-// });
-
-// audio.addEventListener("ended", ()=>{
-//     PlayBtn.classList.replace("fa-pause", "fa-paly");
-//     IsPLaying = false;
-//     ResumePosition = 0;
-// });
 
 let music = new Audio();
 
@@ -127,22 +97,6 @@ function ChangeMusic(direction){
     playMusic();
 }
 
-// function updateProgressBar(){
-//     const {duration, currentTime} = music;
-//     const progressPercent = (currentTime / duration) * 100;
-//     Progress.style.width = `${progressPercent}%`;
-
-//     const formatTime = (time) => String(Math.floor(time)).padStart(2, '0');
-//     Duration.textContent = `${formatTime(duration / 60 )}:${formatTime(duration % 60)}`;
-//     Curr_Time.textContent = `${formatTime(currentTime / 60 )}:${formatTime(currentTime % 60)}`;
-// }
-
-// function setProgressBar(e){
-//     const width = PlayerProgress.clientWidth;
-//     const clickX = e.offsetX;
-//     music.currentTime = (clickX / width) * music.duration;
-// }
-
 function updateProgressBar() {
     const { duration, currentTime } = music;
     // console.log('duration:', duration);
@@ -165,6 +119,7 @@ function setProgressBar(e) {
     const clickX = e.offsetX;
     music.currentTime = (clickX / width) * music.duration;
 }
+
 let value = '';
 
     shuffle.addEventListener('click', function(){
@@ -214,10 +169,12 @@ PopUp_Playlist.addEventListener('click', ()=>{
     if(pop_activity){
         PopUp.style.display = "none";
         pop_activity = false;
+        PopUp_Playlist.setAttribute('title', 'Playlist');
     }
     else{
         PopUp.style.display = "flex";
         pop_activity = true;
+        PopUp_Playlist.setAttribute('title', 'Close');
     }
 })
 
@@ -234,6 +191,77 @@ songElements.forEach(function(songElement) {
     }
   });
 });
+
+const volume = document.getElementById('volume_meter'),
+icon = document.getElementById('volume_icon');
+
+volume.addEventListener('input', ()=>{
+    let value = volume.value;
+    if(value == 0){
+        icon.classList.replace('bxs-volume-low', 'bxs-volume-mute');
+        icon.classList.replace('bxs-volume', 'bxs-volume-mute');
+        icon.classList.replace('bxs-volume-full', 'bxs-volume-mute');
+    }
+    else if(value > 0 && value<=50){
+        icon.classList.replace('bxs-volume-mute', 'bxs-volume-low');
+        icon.classList.replace('bxs-volume', 'bxs-volume-low');
+        icon.classList.replace('bxs-volume-full', 'bxs-volume-low');
+    }
+    else if(value >50 && value<=100){
+        icon.classList.replace('bxs-volume-mute', 'bxs-volume-full');
+        icon.classList.replace('bxs-volume-low', 'bxs-volume-full');
+        icon.classList.replace('bxs-volume', 'bxs-volume-full');
+    }
+    music.volume = (value/100);
+})
+
+
+// let audio = new Audio('/assets/song/Masakali.mp3');
+// let IsPLaying = false;
+// let ResumePosition = 0;
+
+// PlayBtn.addEventListener("click", ()=>{
+//     if(!IsPLaying){
+//         if(ResumePosition === 0)
+//         {
+//             audio.play();
+//         }
+//         else{
+//             audio.currentTime = ResumePosition;
+//             audio.play();
+//         }
+//         PlayBtn.classList.replace("fa-play", "fa-pause");
+//     }
+//     else{
+//         audio.pause();
+//         PlayBtn.classList.replace("fa-pause", "fa-play");
+//         ResumePosition = audio.currentTime;
+//     }
+
+//     IsPLaying = true;
+// });
+
+// audio.addEventListener("ended", ()=>{
+//     PlayBtn.classList.replace("fa-pause", "fa-paly");
+//     IsPLaying = false;
+//     ResumePosition = 0;
+// });
+
+// function updateProgressBar(){
+//     const {duration, currentTime} = music;
+//     const progressPercent = (currentTime / duration) * 100;
+//     Progress.style.width = `${progressPercent}%`;
+
+//     const formatTime = (time) => String(Math.floor(time)).padStart(2, '0');
+//     Duration.textContent = `${formatTime(duration / 60 )}:${formatTime(duration % 60)}`;
+//     Curr_Time.textContent = `${formatTime(currentTime / 60 )}:${formatTime(currentTime % 60)}`;
+// }
+
+// function setProgressBar(e){
+//     const width = PlayerProgress.clientWidth;
+//     const clickX = e.offsetX;
+//     music.currentTime = (clickX / width) * music.duration;
+// }
 
 // let isLooping = false;
 

@@ -34,7 +34,7 @@
         </div>
 
         <div class="controls">
-            <i class='bx bxs-playlist' id="list"></i>
+            <i class='bx bxs-playlist' id="list" title="Playlist"></i>
             <div id="playlist">
                 <div class="songs" id="song1" data-value=0>
                     <img src="./assets/image/1.jpg">
@@ -78,6 +78,16 @@
             </span>
         </div>
 
+        <div class="volume_wrapper">
+        <div id="volume">
+            <i class='bx bxs-volume' id="volume_icon"></i>
+            <input type="range" value="100" step="5" id="volume_meter">
+        </div>
+        <div id="add_your">
+            <button>Add Music</button>
+            <button>Remove Music</button>
+        </div>
+    </div>
     </div>
     <script src="script.js"></script>
 </body>

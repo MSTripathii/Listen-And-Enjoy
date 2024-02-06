@@ -38,7 +38,8 @@ body{
 }
 
 .app_box{
-    height: 450px;
+    display: inline-block;
+    height: max-content;
     width: 350px;
     padding: 25px;
     margin-top: 120px;
@@ -197,4 +198,91 @@ h2{
     background: rgba(0, 0, 0, 0.3);
     cursor: pointer;
     border-radius: 10px;
+}
+
+.volume_wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#volume{
+    height: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: calc(100%/2);
+}
+
+#volume input{
+    width: inherit;
+    margin-left: -10px;
+}
+
+/* #volume i{
+    margin-top: -10px;
+} */
+
+/* input[type="range"]{
+    background-color: rgba(0, 0, 0, 0.305);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background-color: black;
+    border-radius: 10px;
+    height: 7px;
+    margin-top: -1px;
+}
+
+input[type="range"]::-webkit-slider-thumb{
+    background: white;
+    -webkit-appearance: none;
+} */
+
+input[type='range'] {
+    overflow: hidden;
+    width: 80px;
+    -webkit-appearance: none;
+    background-color: #00000058;
+  }
+  
+  input[type='range']::-webkit-slider-runnable-track {
+    height: 10px;
+    -webkit-appearance: none;
+    color: #000000;
+    margin-top: -1px;
+  }
+  
+  input[type='range']::-webkit-slider-thumb {
+    width: 10px;
+    -webkit-appearance: none;
+    height: 10px;
+    cursor: progress;
+    background: rgb(255, 255, 255);
+    box-shadow: -80px 0 0 80px #000000;
+  }
+
+#add_your{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: calc(100%/2);
+    padding: 10px;
+}
+
+#add_your button{
+    margin: 5px;
+    height: 40px;
+    width: calc(100%/2);
+    border-radius: 5px;
+    border: none;
+    box-shadow: 10px 10px 30px 5px rgba(0, 0, 0, 0.267), inset 10px 10px 30px 5px rgba(0, 0, 0, 0.267);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+}
+
+#add_your button:hover{
+    box-shadow: 10px 10px 30px 5px rgba(0, 0, 0, 0.648), inset 10px 10px 30px 5px rgba(0, 0, 0, 0.267);
 }
