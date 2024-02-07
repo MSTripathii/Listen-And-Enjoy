@@ -124,14 +124,14 @@ let value = '';
 
     shuffle.addEventListener('click', function(){
         value = this.dataset.value;
-        console.log(value)
+        // console.log(value)
         shuffle.style.display = 'none';
         loop.style.display = 'block';
     })
 
     loop.addEventListener('click', function(){
         value = this.dataset.value;
-        console.log(value);
+        // console.log(value);
         loop.style.display = 'none';
         shuffle.style.display = 'block';
     })
@@ -199,22 +199,36 @@ volume.addEventListener('input', ()=>{
     let value = volume.value;
     if(value == 0){
         icon.classList.replace('bxs-volume-low', 'bxs-volume-mute');
-        icon.classList.replace('bxs-volume', 'bxs-volume-mute');
         icon.classList.replace('bxs-volume-full', 'bxs-volume-mute');
     }
     else if(value > 0 && value<=50){
         icon.classList.replace('bxs-volume-mute', 'bxs-volume-low');
-        icon.classList.replace('bxs-volume', 'bxs-volume-low');
         icon.classList.replace('bxs-volume-full', 'bxs-volume-low');
     }
     else if(value >50 && value<=100){
         icon.classList.replace('bxs-volume-mute', 'bxs-volume-full');
         icon.classList.replace('bxs-volume-low', 'bxs-volume-full');
-        icon.classList.replace('bxs-volume', 'bxs-volume-full');
     }
     music.volume = (value/100);
 })
 
+
+
+icon.addEventListener('click', function(){
+    let input_value = volume.value; 
+    let current_icon = icon.classList.value
+    if(icon.dataset.value == 'mute'){
+        icon.classList.replace('bxs-volume-low', 'bxs-volume-mute');
+        icon.classList.replace('bxs-volume-full', 'bxs-volume-mute');
+        volume.value = 0;
+        music.volume = 0.0;
+        icon.addEventListener('click', ()=>{
+            icon.classList.value = current_icon;
+            volume.value = input_value;
+            music.volume = (input_value/100);
+        })
+    }
+})
 
 // let audio = new Audio('/assets/song/Masakali.mp3');
 // let IsPLaying = false;
